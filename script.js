@@ -9,10 +9,10 @@ function renderBookCards() {
         const bookTitle = books[indexBook].name;
         const price = books[indexBook].price.toFixed(2).toString().replace(".", ",") + " €";
         const likes = books[indexBook].likes;
+        const gender = (books[indexBook].gender == "female") ? "Autorin" : "Autor"; 
         const author = books[indexBook].author;
         const published = books[indexBook].publishedYear;
         const genre = books[indexBook].genre;
-        const gender = (books[indexBook].gender == "female") ? "Autorin" : "Autor"; 
     
         bookCardsRef.innerHTML += getBookCard(indexBook, bookTitle, price, likes, gender, author, published, genre);
         renderComments(indexBook);

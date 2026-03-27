@@ -8,11 +8,13 @@ function getBookCard(indexBook, bookTitle, price, likes, gender, author, publish
   return `
     <section class="BookCard">
       <h2>${bookTitle}</h2>
-      <svg class="BookIcon" 
-        ${xmlns}
-        ${viewBox}>
-        <${pathBookIcon}/>
-      </svg>
+      <span>
+        <svg class="BookIcon" 
+          ${xmlns}
+          ${viewBox}>
+          <${pathBookIcon}/>
+        </svg>
+      </span>
 
       <div class="ChildContainerBookCard">
         <div class="ContainerPriceLikes">
