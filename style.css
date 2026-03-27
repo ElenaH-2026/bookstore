@@ -1,9 +1,13 @@
 :root {
-    --color-dark: #05171E;
+    /* --color-dark: #05171E;
     --color-medium: #0D3240;
     --color-light:#124758;
-    --color-highlight: #407E95;
-    --color-signal: #C85450;
+    --color-highlight: #407E95; */
+    --color-dark: #1e0805;
+    --color-medium: #40170d;
+    --color-light:#582012;
+    --color-highlight: #954074;
+    --color-signal: var(--color-highlight);
     --color-font: white;
     --font-family: monospace;
 }
@@ -96,13 +100,13 @@ main {
 }
 
 .LikeIcon {
-    fill: var(--color-highlight);
+    fill: var(--color-font);
     width: 32px;
 }
 
-.Liked {
+/* .Liked {
    fill: var(--color-signal); 
-}
+} */
 
 .SubmitIcon {
     fill: var(--color-highlight);
