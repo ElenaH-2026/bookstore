@@ -9,10 +9,9 @@
     <script src="./scripts/books.js"></script>
     <script src="./script.js"></script>
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="init()">
     <header>
         <div class="ContainerHeaderFooter">
             <span>Bookstore</span>  
@@ -22,65 +21,9 @@
 
     <main>
         <h1>Bookstore</h1>
-        <section class="BookCard">
-            <h2>Buchtitel</h2>
-
-            <svg class="BookIcon" 
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 -960 960 960">
-                <path d="M270-80q-45 0-77.5-30.5T160-186v-558q0-38 23.5-68t61.5-38l395-78v640l-379 76q-9 2-15 9.5t-6 16.5q0 11 9 18.5t21 7.5h450v-640h80v720H270Zm90-233 200-39v-478l-200 39v478Zm-80 16v-478l-15 3q-11 2-18 9.5t-7 18.5v457q5-2 10.5-3.5T261-293l19-4Zm-40-472v482-482Z"/>
-            </svg>
-
-            <div class="ChildContainerBookCard">
-                <div class="ContainerPriceLikes">
-                    <span class="Price">XX,99 €</span>
-                    <div class="ContainerLikes">
-                        <span>likes</span>
-                        <button name="like">
-                            <svg class="LikeIcon Liked"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 -960 960 860">
-                                <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <table>
-                    <tr>
-                        <td>Author:</td>
-                        <td>...author...</td>
-                    </tr>
-                    <tr>
-                        <td>Erschienen:</td>
-                        <td>...XXXX...</td>
-                    </tr>
-                    <tr>
-                        <td>Genre:</td>
-                        <td>...genre...</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="ChildContainerBookCard">
-                <table>
-                    <th>Kommentare:</th>
-                    <tr>
-                        <td>name:</td>
-                        <td>...comment...</td>
-                    </tr>
-                </table>
-                <div class="ContainerInput">
-                    <input type="text" placeholder="Schreibe deinen Kommentar ..." required>
-                    <button type="submit">
-                        <svg class="SubmitIcon"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 -960 960 900">
-                            <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </section>
+        <div id="#BookCards"
+            class="ContainerBookCards">
+        </div>
     </main>
 
     <footer>

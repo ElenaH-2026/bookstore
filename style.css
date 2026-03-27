@@ -38,10 +38,17 @@ td:first-child {
 input {
     background-color: var(--color-light);
     color: var(--color-font);
-    flex: 1;
     border-color: var(--color-highlight);
     border-width: 0 0 2px;
     padding: 8px;
+}
+
+.InputName {
+    width: 100px;
+}
+
+.InputComment {
+    flex: 1;
 }
 
 ::placeholder {
@@ -53,6 +60,7 @@ input {
 button {
     background-color: var(--color-medium);
     border: none;
+    padding: 0;
     cursor: pointer;
 }
 
@@ -69,7 +77,7 @@ body {
 
 header, footer {
     background-color: var(--color-medium);
-    width: 100vw;
+    width: 100%;
 }
 
 .ContainerHeaderFooter {
@@ -82,6 +90,14 @@ main {
     display: flex;
     flex: 1;
     flex-direction: column;
+    padding: 0 80px;
+}
+
+.ContainerBookCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
 }
 
 .BookCard {
@@ -127,13 +143,16 @@ main {
 .ContainerLikes {
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
 .Price {
     color: var(--color-signal);
+    font-size: 24px;
     align-self: center;
 }
 
 .ContainerInput {
     display: flex;
+    gap: 4px;
 }
