@@ -21,5 +21,13 @@ function renderBookCards() {
 
 function renderComments(indexBook) {
     let commentsRef = document.getElementById('#Comments' + indexBook);
-    commentsRef.innerHTML = getComments('commentName', 'comment');
+    let commentsArray = books[indexBook].comments;
+
+    for (let indexComment = 0; indexComment < commentsArray.length; indexComment++) {
+        const commentName = commentsArray[indexComment].name;
+        const comment = commentsArray[indexComment].comment;
+        
+        commentsRef.innerHTML = getComments(commentName, comment);
+    }
+    
 }
