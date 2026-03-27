@@ -1,0 +1,135 @@
+:root {
+    --color-dark: #05171E;
+    --color-medium: #0D3240;
+    --color-light:#124758;
+    --color-highlight: #407E95;
+    --color-signal: #C85450;
+    --color-font: white;
+    --font-family: monospace;
+}
+
+* {
+  box-sizing: border-box; 
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  text-align: center;
+  padding: 16px;
+}
+
+h2 {
+  padding: 8px;
+}
+
+table {
+    text-align: left;
+}
+
+td:first-child {
+    width: 100px;
+}
+
+input {
+    background-color: var(--color-light);
+    color: var(--color-font);
+    flex: 1;
+    border-color: var(--color-highlight);
+    border-width: 0 0 2px;
+    padding: 8px;
+}
+
+::placeholder {
+    font-family: var(--font-family);
+    color: var(--color-highlight);
+    opacity: 1
+}
+
+button {
+    background-color: var(--color-medium);
+    border: none;
+    cursor: pointer;
+}
+
+body {
+    background-color: var(--color-dark);
+    font-family: var(--font-family);
+    color: var(--color-font);
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    }
+
+header, footer {
+    background-color: var(--color-medium);
+    width: 100vw;
+}
+
+.ContainerHeaderFooter {
+    display: flex;
+    justify-self: center;
+    padding: 16px;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.BookCard {
+    background-color: var(--color-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 4px var(--color-highlight);
+    width: 400px;
+}
+
+.BookIcon {
+    fill: var(--color-dark);
+    padding: 8px;
+    width: 150px;
+}
+
+.LikeIcon {
+    fill: var(--color-highlight);
+    width: 32px;
+}
+
+.Liked {
+   fill: var(--color-signal); 
+}
+
+.SubmitIcon {
+    fill: var(--color-highlight);
+    width: 32px;
+}
+
+.ChildContainerBookCard {
+    border-top: solid 2px var(--color-highlight);
+    padding: 8px;
+    width: 100%;
+}
+
+.ContainerPriceLikes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ContainerLikes {
+    display: flex;
+    align-items: center;
+}
+
+.Price {
+    color: var(--color-signal);
+    align-self: center;
+}
+
+.ContainerInput {
+    display: flex;
+}
