@@ -45,16 +45,17 @@ function getBookCard(indexBook, bookTitle, price, likes, gender, author, publish
       </div>
 
       <div class="ChildContainerBookCard">
-        <table>
-          <th>Kommentare:</th>
-          <tr id="#Comments${indexBook}">
-          </tr>
+        <h3>Kommentare:</h3>
+        <p id="#DefaultText${indexBook}"
+          class="DefaultText">
+        </p>
+        <table id="#Comments${indexBook}">
         </table>
         <div class="ContainerInput">
           <input 
             class="InputName" 
             type="text" 
-            placeholder="Name (opt.)">
+            placeholder="Name (optional)">
           <input 
             class="InputComment" 
             type="text" 
@@ -74,6 +75,8 @@ function getBookCard(indexBook, bookTitle, price, likes, gender, author, publish
 
 function getComments(commentName, comment) {
   return `
-    <td>${commentName}:</td>
-    <td>${comment}</td>`
+    <tr>
+      <td>${commentName}:</td>
+      <td>${comment}</td>
+    </tr>`
 }

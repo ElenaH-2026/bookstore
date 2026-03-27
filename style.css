@@ -27,6 +27,13 @@ h2 {
   padding: 8px;
 }
 
+h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-highlight);
+    padding: 4px;
+}
+
 table {
     text-align: left;
 }
@@ -36,7 +43,7 @@ td {
 }
 
 td:first-child {
-    width: 130px;
+    width: 150px;
 }
 
 input {
@@ -48,7 +55,7 @@ input {
 }
 
 .InputName {
-    width: 100px;
+    width: 150px;
 }
 
 .InputComment {
@@ -148,6 +155,10 @@ main {
    fill: var(--color-signal); 
 } */
 
+.DefaultText {
+    padding: 4px;
+}
+
 .SubmitIcon {
     fill: var(--color-highlight);
     width: 32px;
@@ -178,5 +189,6 @@ main {
 
 .ContainerInput {
     display: flex;
+    padding-top: 8px;
     gap: 4px;
 }
