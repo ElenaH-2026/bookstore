@@ -2,19 +2,45 @@ let allBooksData= [];
 let allLikeData= {"likes":[], "liked":[]};
 let allComments = {};
 
-
-
 function init() {
-    getBooksAndLikeData();
-            console.table(allBooksData);
-            console.table(allLikeData);
+    getBooksData();
     renderBookCards();
+    getLikeData();
+            console.table(allLikeData);
     getBooksComments(); 
-            console.table(allComments);
-    renderComments();
+    getLikeDataAndCommentsFromLokalStorage();
+    renderAllLikes();
+    renderAllComments();
 }
 
-function getBooksAndLikeData() {
+function getLikeDataAndCommentsFromLokalStorage() {
+    getLikeDataFromLokalStorage();
+    getCommentsFromLokalStorage();
+}
+
+function getLikeDataFromLokalStorage() {
+    let localLikes = JSON.parse(localStorage.getItem("likes"));
+    let localLiked = JSON.parse(localStorage.getItem("liked"));
+
+    if (localLikes != null) {
+        allLikeData.likes = localLikes;
+        allLikeData.liked = localLiked;
+    }
+}
+
+function getCommentsFromLokalStorage() {
+    for (let indexBook = 0; indexBook < allBooksData.length; indexBook++) {
+        let localCommentsNames = JSON.parse(localStorage.getItem(indexBook + "_commentsNames"));
+        let localComments = JSON.parse(localStorage.getItem(indexBook + "_comments"));
+
+        if (localComments != null) {
+            allComments[indexBook + "_commentsNames"] = localCommentsNames;
+            allComments[indexBook + "_comments"] = localComments;
+        }
+    } 
+}
+
+function getBooksData() {
     for (let indexBook = 0; indexBook < books.length; indexBook++) {
         let bookData = [];
 
@@ -26,9 +52,13 @@ function getBooksAndLikeData() {
         bookData.genre = books[indexBook].genre;
 
         allBooksData.push(bookData);
+    }
+}
 
+function getLikeData() {
+    for (let indexBook = 0; indexBook < books.length; indexBook++) {
         allLikeData.likes.push(books[indexBook].likes);
-        allLikeData.liked.push( books[indexBook].liked);
+        allLikeData.liked.push(books[indexBook].liked);
     }
 }
 
@@ -46,35 +76,8 @@ function getBooksComments() {
 
         allComments[namesKey] = namesArray;
         allComments[commentsKey] = commentsArray;
-        localStorage.setItem(namesKey, []);
-        localStorage.setItem(commentsKey, []);
     }
 }
-
-function saveCommentsToLocalStorage(params) {
-    localStorage.setItem(key1, array1);
-    localStorage.setItem(key2, array2);
-}
-
-function addComment(indexBook) {
-    let id_name = '#NameInput' + indexBook;
-    let id_comment = '#CommentInput' + indexBook;
-
-    let nameInputRef = document.getElementById(id_name);
-    let nameInput = nameInputRef.value;
-    let commentInputRef = document.getElementById(id_comment);
-    let commentInput = commentInputRef.value;
-
-    if(commentInput != ""){
-        nameInput != "" ? allComments[indexBook + "_commentsNames"].push(nameInput) : allComments[indexBook + "_commentsNames"].push("Anonym");
-        allComments[indexBook + "_comments"].push(commentInput);
-    }
-
-    console.table(allComments[indexBook + "_commentsNames"]);
-    console.table(allComments[indexBook + "_comments"]);
-
-}
-
 
 function renderBookCards() {
     let bookCardsRef = document.getElementById('#BookCards');
@@ -86,39 +89,67 @@ function renderBookCards() {
             allBooksData[indexBook].gender, 
             allBooksData[indexBook].author, 
             allBooksData[indexBook].published, 
-            allBooksData[indexBook].genre,
-            allLikeData.likes[indexBook]
-            );
+            allBooksData[indexBook].genre);
+    }
+}
 
-        // renderLike(indexBook);
+function renderAllLikes() {
+    for (let indexBook = 0; indexBook < allLikeData.likes.length; indexBook++) {
+        renderLike(indexBook); 
     }
 }
 
 function renderLike(indexBook) {
     let likeRef = document.getElementById('#Like' + indexBook);
-    likeRef.innerHTML = " ";
     let likes = allLikeData.likes[indexBook];
     likeRef.innerHTML = getLikeInformation(likes);
 }
 
-function renderComments() {
+function renderAllComments() {
     for (let indexBook = 0; indexBook < allBooksData.length; indexBook++) {
-
-        let defaultRef = document.getElementById('#DefaultText' + indexBook);
-        let commentsRef = document.getElementById('#Comments' + indexBook);
-        let commentsNames = allComments[indexBook + "_commentsNames"];
-        let comments = allComments[indexBook + "_comments"];
-        
-
-        if (comments.length > 0) {  
-            for (let indexComment = 0; indexComment < comments.length; indexComment++) {
-                const commentName = commentsNames[indexComment];
-                const comment = comments[indexComment];
-                
-                commentsRef.innerHTML += getComments(commentName, comment);
-            }
-        } else {
-            defaultRef.innerHTML = getDefaultText();
-        }
+        renderComments(indexBook);
     }
+}
+
+function renderComments(indexBook) {
+    let defaultRef = document.getElementById('#DefaultText' + indexBook);
+    defaultRef.innerHTML = "";
+    let commentsRef = document.getElementById('#Comments' + indexBook);
+    commentsRef.innerHTML = "";
+    let commentsNames = allComments[indexBook + "_commentsNames"];
+    let comments = allComments[indexBook + "_comments"];
+
+    if (comments.length > 0) {  
+        for (let indexComment = 0; indexComment < comments.length; indexComment++) {
+            const commentName = commentsNames[indexComment];
+            const comment = comments[indexComment];
+            
+            commentsRef.innerHTML += getComments(commentName, comment);
+        }
+    } else {
+        defaultRef.innerHTML = getDefaultText();
+    }
+}
+
+function addComment(indexBook) {
+    let nameInputRef = document.getElementById('#NameInput' + indexBook);
+    let commentInputRef = document.getElementById('#CommentInput' + indexBook);
+    let namesKey = indexBook + "_commentsNames";
+    let commentsKey = indexBook + "_comments";
+
+    if(commentInputRef.value != "") {
+        nameInputRef.value != "" ? allComments[namesKey].push(nameInputRef.value) : allComments[namesKey].push("Anonym");
+        allComments[commentsKey].push(commentInputRef.value);
+    }
+
+    renderANDsaveSupplementedComment(indexBook, namesKey, commentsKey);
+    nameInputRef.value = "";
+    commentInputRef.value = "";
+}
+
+function renderANDsaveSupplementedComment(indexBook, namesKey, commentsKey) {
+    renderComments(indexBook);
+    localStorage.setItem(namesKey, JSON.stringify(allComments[namesKey]));
+    localStorage.setItem(commentsKey, JSON.stringify(allComments[commentsKey]));
+    
 }

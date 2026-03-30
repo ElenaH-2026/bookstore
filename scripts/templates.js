@@ -17,17 +17,9 @@ function getBookCard(indexBook, bookTitle, price, gender, author, published, gen
       <div class="ChildContainerBookCard">
         <div class="ContainerPriceLikes">
           <span class="Price">${price}</span>
-          <div id="#Like${indexBook} 
+          <div id="#Like${indexBook}" 
             class="ContainerLikes">
-            <span>${likes}</span>
-            <button name="like">
-              <svg class="LikeIcon Liked"
-                ${xmlns}
-                ${viewBox}>
-                <${pathLikeIcon}/>
-              </svg>
-            </button>
-          </div>
+              </div>
         </div>
         <table>
           <tr>
