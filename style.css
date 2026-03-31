@@ -151,9 +151,9 @@ main {
     width: 32px;
 }
 
-/* .Liked {
+.Liked {
    fill: var(--color-signal); 
-} */
+}
 
 .DefaultText {
     padding: 4px;

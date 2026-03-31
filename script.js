@@ -100,9 +100,9 @@ function renderAllLikes() {
 }
 
 function renderLike(indexBook) {
-    let likeRef = document.getElementById('#Like' + indexBook);
+    let likeRef = document.getElementById('#LikeContainer' + indexBook);
     let likes = allLikeData.likes[indexBook];
-    likeRef.innerHTML = getLikeInformation(likes);
+    likeRef.innerHTML = getLikeInformation(indexBook, likes);
 }
 
 function renderAllComments() {
@@ -152,4 +152,9 @@ function renderANDsaveSupplementedComment(indexBook, namesKey, commentsKey) {
     localStorage.setItem(namesKey, JSON.stringify(allComments[namesKey]));
     localStorage.setItem(commentsKey, JSON.stringify(allComments[commentsKey]));
     
+}
+
+function like_dislike(indexBook) {
+    let likeRef = document.getElementById('#LikeSymbol' + indexBook);
+    likeRef.classList.toggle("Liked");
 }

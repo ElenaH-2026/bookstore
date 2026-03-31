@@ -17,7 +17,7 @@ function getBookCard(indexBook, bookTitle, price, gender, author, published, gen
       <div class="ChildContainerBookCard">
         <div class="ContainerPriceLikes">
           <span class="Price">${price}</span>
-          <div id="#Like${indexBook}" 
+          <div id="#LikeContainer${indexBook}" 
             class="ContainerLikes">
               </div>
         </div>
@@ -66,11 +66,12 @@ function getBookCard(indexBook, bookTitle, price, gender, author, published, gen
     </section>`;
 }
 
-function getLikeInformation(likes) {
+function getLikeInformation(indexBook, likes) {
   return `
     <span>${likes}</span>
-    <button name="like">
-      <svg class="LikeIcon Liked"
+    <button onclick="like_dislike(${indexBook})" name="like">
+      <svg id="#LikeSymbol${indexBook}" 
+        class="LikeIcon"
         ${xmlns}
         ${viewBox}>
         <${pathLikeIcon}/>
