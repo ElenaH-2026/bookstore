@@ -17,7 +17,7 @@ function getBookCard(indexBook, bookTitle, price, gender, author, published, gen
       <div class="ChildContainerBookCard">
         <div class="ContainerPriceLikes">
           <span class="Price">${price}</span>
-          <div id="#LikeContainer${indexBook}" 
+          <div id="#LikeContainer_${indexBook}" 
             class="ContainerLikes">
               </div>
         </div>
@@ -39,17 +39,17 @@ function getBookCard(indexBook, bookTitle, price, gender, author, published, gen
 
       <div class="ChildContainerBookCard">
         <h3>Kommentare:</h3>
-        <p id="#DefaultText${indexBook}"
+        <p id="#DefaultText_${indexBook}"
           class="DefaultText">
         </p>
-        <table id="#Comments${indexBook}">
+        <table id="#Comments_${indexBook}">
         </table>
         <div class="ContainerInput">
-          <input id="#NameInput${indexBook}"
+          <input id="#NameInput_${indexBook}"
             class="InputName" 
             type="text" 
             placeholder="Name (optional)">
-          <input id="#CommentInput${indexBook}"
+          <input id="#CommentInput_${indexBook}"
             class="InputComment" 
             type="text" 
             placeholder="dein Kommentar ..." 
@@ -68,9 +68,11 @@ function getBookCard(indexBook, bookTitle, price, gender, author, published, gen
 
 function getLikeInformation(indexBook, likes) {
   return `
-    <span>${likes}</span>
-    <button onclick="like_dislike(${indexBook})" name="like">
-      <svg id="#LikeSymbol${indexBook}" 
+    <span id="#LikeCount_${indexBook}">
+      ${likes}
+    </span>
+    <button onclick="toggleLike(${indexBook})" name="like">
+      <svg id="#LikeSymbol_${indexBook}" 
         class="LikeIcon"
         ${xmlns}
         ${viewBox}>
