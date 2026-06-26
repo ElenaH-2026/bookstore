@@ -1,4 +1,8 @@
-# ![Book Icon](/assets/book-icon-40px.png) Bookstore
+<div align="center">
+        
+# ![Book Icon](/assets/book-icon-40px.png) Bookstore ![Book Icon](/assets/book-icon-40px.png)
+
+</div>
 
 <div align="center">
         
